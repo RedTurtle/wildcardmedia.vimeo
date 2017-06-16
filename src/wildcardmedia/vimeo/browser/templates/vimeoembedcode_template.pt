@@ -1,0 +1,37 @@
+<div class="vimeoEmbedWrapper"
+     i18n:domain="wildcardmedia.vimeo"
+     tal:define="optout python:request.cookies.get('video-optout')=='true'
+                 util context/@@wcmedia-utils;
+                 settings util/settings;
+                 video nocall: video|context;
+                 height height|video/height|settings/default_video_height|string:720;
+                 width width|video/width|settings/default_video_width|string:400;
+                 upload_to_youtube video/upload_video_to_youtube|nothing;
+                 video_url view/getVideoURL|nothing">
+
+    <tal:video condition="not:optout">
+        <iframe width="500"
+                height="281"
+                frameborder="0"
+                webkitallowfullscreen="webkitallowfullscreen"
+                mozallowfullscreen="mozallowfullscreen"
+                allowfullscreen="allowfullscreen"
+                tal:attributes="width width;
+                                height height;
+                                src video_url">
+        </iframe>
+    </tal:video>
+
+    <p class="videoBlockedWarning"
+       tal:condition="optout" i18n:translate="optout_enabled">
+        Privacy settings prevents the video from being displayed.
+    </p>
+    
+    <div class="removeVideoURL">
+        <a href="" title="Open in a new window" target="_blank"
+           i18n:attributes="title" i18n:translate=""
+           tal:attributes="href view/getVideoURL">
+            See video on Vimeo
+        </a>
+    </div>
+</div>
