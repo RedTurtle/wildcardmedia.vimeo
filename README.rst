@@ -6,12 +6,13 @@
 wildcardmedia.vimeo
 ==============================================================================
 
-Tell me what your product does
+Video adapter for the "new" wildcard.media product (from wildcard.media 3.x onward).
 
 Features
 --------
 
-- Can be bullet points
+- This product gives the 'new' wildcard.media the support for videos uploaded on
+  Vimeo.
 
 
 Examples
