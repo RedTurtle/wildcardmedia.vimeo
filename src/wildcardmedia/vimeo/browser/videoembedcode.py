@@ -24,7 +24,7 @@ class VimeoEmbedCode(object):
         return self.context.video_url
 
     def getVideoLink(self):
-        video_id = urlparse(self.context.video_url())[2].split('/')[-1]
+        video_id = urlparse(self.context.video_url)[2].split('/')[-1]
         video_url = "https://player.vimeo.com/video/%s" % video_id
         return self.check_autoplay(video_url)
 
