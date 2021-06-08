@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0a1 (unreleased)
+1.0.0 (2021-06-08)
 ------------------
 
 - Initial release. Support of Vimeo service for the new wildcard.media's
