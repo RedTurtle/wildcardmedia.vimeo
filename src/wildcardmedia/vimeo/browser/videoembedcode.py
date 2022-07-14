@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from zope.interface import implements
+from zope.interface import implementer
 from wildcard.media.adapter import IVideoEmbedCode
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 
+@implementer(IVideoEmbedCode)
 class VimeoEmbedCode(object):
     """ Wildcard.media - Vimeo support
     """
 
-    implements(IVideoEmbedCode)
     template = ViewPageTemplateFile('templates/vimeoembedcode_template.pt')
 
     def __init__(self, context, request):
@@ -29,8 +29,9 @@ class VimeoEmbedCode(object):
         return self.check_autoplay(video_url)
 
     def check_autoplay(self, url):
-        """Check if the we need to add the autoplay parameter, and add it to the URL"""
-        if self.context.video_url.lower().find('autoplay=1')>-1 or \
-                self.request.QUERY_STRING.lower().find('autoplay=1')>-1:
+        """Check if the we need to add the autoplay parameter, and add it to
+        the URL"""
+        if self.context.video_url.lower().find('autoplay=1') > -1 or \
+                self.request.QUERY_STRING.lower().find('autoplay=1') > -1:
             url += '?autoplay=1'
         return url
